@@ -74,6 +74,7 @@ function M.setup()
 
     -- helper
     use { 'editorconfig/editorconfig-vim' } -- editorconfig, for indent
+    use { 'tpope/vim-repeat' }
     use {
       'folke/which-key.nvim',
       config = require('helper.whichkey').config,
@@ -81,10 +82,13 @@ function M.setup()
 
     -- editor
     use { 'tpope/vim-commentary' }
+    use { 'tpope/vim-surround' }
     use {
       'nvim-treesitter/nvim-treesitter',
       -- opt = true,
-      -- event = 'BufRead',
+      -- event = {
+      --   'BufRead',
+      -- },
       run = ':TSUpdate',
       config = require('editor.treesitter').config,
     }
