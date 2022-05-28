@@ -70,6 +70,7 @@ function M.dashboard()
 
   dashboard.section.buttons.val = {
     button("e", "  New file", "<cmd>ene <CR>"),
+    button("f", "  Find file", "<cmd>Telescope find_files<CR>"),
     button("q", "  Quit", "<cmd>qa!<cr>"),
     -- button("SPC f h", "  Recently opened files"),
     -- button("SPC f r", "  Frecency/MRU"),

@@ -22,13 +22,14 @@ function M.config()
 
   local mappings = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
+    ["x"] = { "<cmd>x<CR>", "Save & Quit" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
 
-    -- b = {
-    --   name = "Buffer",
-    --   c = { "<Cmd>bd!<Cr>", "Close current buffer" },
-    --   D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
-    -- },
+    b = {
+      name = "Buffer",
+      c = { "<Cmd>bd!<Cr>", "Close current buffer" },
+      D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
+    },
 
     z = {
       name = "Packer",
@@ -65,19 +66,19 @@ function M.config()
     --   w = { "<cmd>HopWord<cr>", "word mode" },
     -- },
 
-    -- -- telescope
-    -- f = {
-    --   name = "Find",
-    --   f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
-    --   d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
-    --   b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-    --   o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
-    --   g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-    --   c = { "<cmd>Telescope commands<cr>", "Commands" },
-    --   r = { "<cmd>Telescope file_browser<cr>", "Browser" },
-    --   w = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
-    --   e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    -- },
+    -- telescope
+    f = {
+      name = "Telescope Find",
+      f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
+      -- d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
+      b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+      o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
+      g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+      c = { "<cmd>Telescope commands<cr>", "Commands" },
+      r = { "<cmd>Telescope file_browser<cr>", "Browser" },
+      w = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
+      -- e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+    },
 
     -- p = {
     --   name = "Project",

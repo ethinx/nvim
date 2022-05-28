@@ -132,6 +132,17 @@ function M.setup()
       config = require('completion.lsp-setup').config,
     }
 
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-lua/popup.nvim',
+      },
+      config = function()
+        require('helper.telescope')
+      end,
+    }
+
 
     if packer_bootstrap then
       print "Restart Neovim required after installation!"

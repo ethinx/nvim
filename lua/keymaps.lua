@@ -28,11 +28,11 @@ keymap('v', '#', [[y?<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>]], default_opts)
 -- https://zhuanlan.zhihu.com/p/20566792
 keymap('v', 'ss', [[y:%s`<C-R>"``g<left><left>]], default_opts)
 
-keymap('n', '<leader>w', ':w!<cr>', default_opts)
+-- keymap('n', '<leader>w', ':w!<cr>', default_opts)
 
-keymap('', '<leader>pi', ':PackerInstall', default_opts)
-keymap('', '<leader>pu', ':PackerUpdate', default_opts)
-keymap('', '<leader>pc', ':PackerClean', default_opts)
+-- keymap('', '<leader>pi', ':PackerInstall', default_opts)
+-- keymap('', '<leader>pu', ':PackerUpdate', default_opts)
+-- keymap('', '<leader>pc', ':PackerClean', default_opts)
 
-keymap('', '<leader>qa', ':qa!<cr>', default_opts)
-keymap('', '<leader>wq', ':wq<cr>', default_opts)
+-- keymap('', '<leader>qa', ':qa!<cr>', default_opts)
+-- keymap('', '<leader>wq', ':wq<cr>', default_opts)
