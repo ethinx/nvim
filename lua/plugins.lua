@@ -179,6 +179,13 @@ function M.setup()
 			end,
 		})
 
+		use({
+			"lewis6991/gitsigns.nvim",
+			config = function()
+				require("ui.gitsigns")
+			end,
+		})
+
 		if packer_bootstrap then
 			print("Restart Neovim required after installation!")
 			require("packer").sync()
