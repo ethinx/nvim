@@ -13,6 +13,9 @@ function M.config()
     on_attach = function(client, bufnr)
       require('nvim-lsp-setup.utils').format_on_save(client)
       require('illuminate').on_attach(client)
+      -- TODO: check the alt key on macOS
+      -- vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
+      -- vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
     end,
     servers = {
       ansiblels = {},
