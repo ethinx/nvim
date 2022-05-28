@@ -114,6 +114,16 @@ function M.setup()
 			},
 		})
 
+		use({
+			"ahmedkhalf/project.nvim",
+			requires = {
+				"nvim-telescope/telescope.nvim",
+			},
+			config = function()
+				require("helper.project")
+			end,
+		})
+
 		-- editor
 		use({ "tpope/vim-commentary" })
 		-- use { 'tpope/vim-surround' }
