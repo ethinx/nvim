@@ -46,9 +46,10 @@ function M.setup()
 
     -- ui
     use {
-      "NLKNguyen/papercolor-theme",
+      -- "NLKNguyen/papercolor-theme",
+      "catppuccin/nvim",
       config = function()
-        vim.cmd 'colorscheme PaperColor'
+        vim.cmd 'colorscheme catppuccin'
       end,
     }
 
