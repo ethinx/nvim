@@ -126,6 +126,8 @@ function M.setup()
         "williamboman/nvim-lsp-installer",
         "folke/lua-dev.nvim",
         "neovim/nvim-lspconfig",
+        'ray-x/lsp_signature.nvim',
+        'RRethy/vim-illuminate',
       },
       config = require('completion.lsp-setup').config,
     }
