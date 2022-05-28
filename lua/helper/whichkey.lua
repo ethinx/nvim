@@ -58,13 +58,13 @@ function M.config()
     --   e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     -- },
 
-    -- -- hop.nvim
-    -- h = {
-    --   name = "hop motion",
-    --   c = { "<cmd>HopChar1<cr>", "1-char mode" },
-    --   l = { "<cmd>HopLine<cr>", "line mode" },
-    --   w = { "<cmd>HopWord<cr>", "word mode" },
-    -- },
+    -- hop.nvim
+    h = {
+      name = "hop motion",
+      c = { "<cmd>HopChar1<cr>", "1-char mode" },
+      l = { "<cmd>HopLine<cr>", "line mode" },
+      w = { "<cmd>HopWord<cr>", "word mode" },
+    },
 
     -- telescope
     f = {

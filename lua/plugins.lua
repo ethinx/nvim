@@ -143,6 +143,22 @@ function M.setup()
       end,
     }
 
+    -- Motions
+    use { "andymass/vim-matchup", event = "CursorMoved" }
+    use { "chaoren/vim-wordmotion" }
+    use { "wellle/targets.vim", event = "CursorMoved" }
+    use { "unblevable/quick-scope", disable = false }
+
+    use {
+      "phaazon/hop.nvim",
+      cmd = { "HopWord", "HopChar1" },
+      config = function()
+        require("hop").setup {}
+      end,
+    }
+
+
+
 
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
