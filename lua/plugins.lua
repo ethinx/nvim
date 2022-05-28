@@ -157,7 +157,15 @@ function M.setup()
       end,
     }
 
-
+    use {
+      'windwp/nvim-autopairs',
+      requires = {
+        "nvim-cmp",
+      },
+      config = function()
+        require('editor.autopairs')
+      end,
+    }
 
 
     if packer_bootstrap then
