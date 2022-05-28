@@ -172,6 +172,13 @@ function M.setup()
 			"jose-elias-alvarez/null-ls.nvim",
 		})
 
+		use({
+			"akinsho/toggleterm.nvim",
+			config = function()
+				require("helper.toggleterm")
+			end,
+		})
+
 		if packer_bootstrap then
 			print("Restart Neovim required after installation!")
 			require("packer").sync()
