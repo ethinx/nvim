@@ -69,16 +69,37 @@ function M.dashboard()
 	dashboard.section.header.val = header
 
 	dashboard.section.buttons.val = {
-		button("e", "  New file", "<cmd>ene <CR>"),
-		button("f", "  Find file", "<cmd>Telescope find_files<CR>"),
-		button("z", "  Packer Sync", "<cmd>PackerSync<CR>"),
-		button("q", "  Quit", "<cmd>qa!<cr>"),
+		button("e", "  New file", "<cmd>ene <CR>", {}),
+		button("f", "  Find file", "<cmd>Telescope find_files<CR>", {}),
+		button("g", "  Live grep", "<cmd>Telescope live_grep<CR>", {}),
+		button("o", "  Recent files", "<cmd>Telescope oldfiles<CR>", {}),
+		button("p", "  Find Project", "<cmd>Telescope projects<CR>", {}),
+		button("z", "  Packer Sync", "<cmd>PackerSync<CR>", {}),
+		button("c", "  Neovim Configuration", ":e ~/.config/nvim/lua/plugins.lua<CR>", {}),
+		button("q", "  Quit", "<cmd>qa!<cr>", {}),
 		-- button("SPC f h", "  Recently opened files"),
 		-- button("SPC f r", "  Frecency/MRU"),
 		-- button("SPC f g", "  Find word"),
 		-- button("SPC f m", "  Jump to bookmarks"),
 		-- button("SPC s l", "  Open last session"),
 	}
+
+	local function footer()
+		local total_plugins = #vim.tbl_keys(packer_plugins)
+		return "   Help poor Children in Uganda!"
+			.. "   v"
+			.. vim.version().major
+			.. "."
+			.. vim.version().minor
+			.. "."
+			.. vim.version().patch
+			.. "   "
+			.. total_plugins
+			.. " plugins"
+	end
+
+	dashboard.section.footer.val = footer()
+	dashboard.section.footer.opts.hl = "Function"
 
 	alpha.setup(dashboard.config)
 end

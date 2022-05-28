@@ -34,9 +34,11 @@ function M.config()
 			tsserver = {}, -- javascript
 			sumneko_lua = require("lua-dev").setup({
 				lspconfig = {
+					diagnostics = { globals = { "vim", "packer_plugins" } },
 					on_attach = function(client, _)
 						require("nvim-lsp-setup.utils").disable_formatting(client)
 					end,
+					telemetry = { enable = false },
 				},
 			}),
 			taplo = {}, -- toml

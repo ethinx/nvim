@@ -96,6 +96,13 @@ function M.setup()
 			end,
 		})
 
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("ui.indent-blankline")
+			end,
+		})
+
 		-- helper
 		use({ "editorconfig/editorconfig-vim" }) -- editorconfig, for indent
 		use({ "tpope/vim-repeat" })
