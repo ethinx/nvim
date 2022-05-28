@@ -1,5 +1,9 @@
 local M = {}
 
+_G.dump = function(...)
+  print(vim.inspect(...))
+end
+
 function M.setup()
   -- Indicate first time installation
   local packer_bootstrap = false
@@ -82,7 +86,7 @@ function M.setup()
 
     -- editor
     use { 'tpope/vim-commentary' }
-    use { 'tpope/vim-surround' }
+    -- use { 'tpope/vim-surround' }
     use {
       'nvim-treesitter/nvim-treesitter',
       -- opt = true,
@@ -92,6 +96,39 @@ function M.setup()
       run = ':TSUpdate',
       config = require('editor.treesitter').config,
     }
+
+    -- completion
+    use {
+      'hrsh7th/nvim-cmp',
+      config = function()
+        require('completion.cmp')
+      end,
+      requires = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        'L3MON4D3/LuaSnip',
+        'saadparwaiz1/cmp_luasnip',
+        'rafamadriz/friendly-snippets',
+      },
+      disable = false,
+    }
+
+    use {
+      'hrsh7th/cmp-nvim-lsp',
+    }
+
+
+    use {
+      'junnplus/nvim-lsp-setup',
+      requires = {
+        "williamboman/nvim-lsp-installer",
+        "folke/lua-dev.nvim",
+        "neovim/nvim-lspconfig",
+      },
+      config = require('completion.lsp-setup').config,
+    }
+
 
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
