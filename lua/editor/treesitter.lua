@@ -44,6 +44,8 @@ function M.config()
     },
 
     indent = { enable = true },
+
+    autopairs = { enable = true },
   }
 
   require('nvim-treesitter.configs').setup(opts)

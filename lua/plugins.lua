@@ -65,6 +65,7 @@ function M.setup()
       'SmiteshP/nvim-gps',
       requires = {
         'nvim-treesitter/nvim-treesitter',
+        'windwp/nvim-autopairs',
       },
     }
 
