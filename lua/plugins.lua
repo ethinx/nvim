@@ -79,12 +79,39 @@ function M.setup()
 			},
 		})
 
+		use({
+			"lewis6991/gitsigns.nvim",
+			config = function()
+				require("ui.gitsigns")
+			end,
+		})
+
+		use({
+			"akinsho/bufferline.nvim",
+			requires = {
+				"moll/vim-bbye",
+			},
+			config = function()
+				require("ui.bufferline")
+			end,
+		})
+
 		-- helper
 		use({ "editorconfig/editorconfig-vim" }) -- editorconfig, for indent
 		use({ "tpope/vim-repeat" })
 		use({
 			"folke/which-key.nvim",
 			config = require("helper.whichkey").config,
+		})
+
+		use({
+			"kyazdani42/nvim-tree.lua",
+			config = function()
+				require("helper.nvim-tree")
+			end,
+			requires = {
+				"kyazdani42/nvim-web-devicons",
+			},
 		})
 
 		-- editor
@@ -176,13 +203,6 @@ function M.setup()
 			"akinsho/toggleterm.nvim",
 			config = function()
 				require("helper.toggleterm")
-			end,
-		})
-
-		use({
-			"lewis6991/gitsigns.nvim",
-			config = function()
-				require("ui.gitsigns")
 			end,
 		})
 
