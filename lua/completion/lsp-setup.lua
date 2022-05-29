@@ -61,6 +61,9 @@ function M.config()
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
 
 	require("completion.null-ls")
+
+	-- local saga = require("lspsaga")
+	-- saga.init_lsp_saga({})
 end
 
 return M

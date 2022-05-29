@@ -173,6 +173,7 @@ function M.setup()
 				"neovim/nvim-lspconfig",
 				"ray-x/lsp_signature.nvim",
 				"RRethy/vim-illuminate",
+				-- "glepnir/lspsaga.nvim",
 			},
 			config = require("completion.lsp-setup").config,
 		})
