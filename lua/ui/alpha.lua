@@ -69,13 +69,14 @@ function M.dashboard()
 	dashboard.section.header.val = header
 
 	dashboard.section.buttons.val = {
-		button("e", "  New file", "<cmd>ene <CR>", {}),
+		-- button("e", "  New file", "<cmd>ene <CR>", {}),
+		button("e", "  New file", ":ene <BAR> startinsert <CR>", {}),
 		button("f", "  Find file", "<cmd>Telescope find_files<CR>", {}),
 		button("g", "  Live grep", "<cmd>Telescope live_grep<CR>", {}),
 		button("o", "  Recent files", "<cmd>Telescope oldfiles<CR>", {}),
 		button("p", "  Find Project", "<cmd>Telescope projects<CR>", {}),
 		button("z", "  Packer Sync", "<cmd>PackerSync<CR>", {}),
-		button("c", "  Neovim Configuration", ":e ~/.config/nvim/lua/plugins.lua<CR>", {}),
+		button("c", "  NeoVim Configuration", ":e ~/.config/nvim/lua/plugins.lua<CR>", {}),
 		button("q", "  Quit", "<cmd>qa!<cr>", {}),
 		-- button("SPC f h", "  Recently opened files"),
 		-- button("SPC f r", "  Frecency/MRU"),
@@ -86,8 +87,7 @@ function M.dashboard()
 
 	local function footer()
 		local total_plugins = #vim.tbl_keys(packer_plugins)
-		return "   Help poor Children in Uganda!"
-			.. "   v"
+		return " v"
 			.. vim.version().major
 			.. "."
 			.. vim.version().minor

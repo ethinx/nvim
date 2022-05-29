@@ -43,6 +43,7 @@ function M.setup()
 
 	-- Plugins
 	local function plugins(use)
+		use({ "lewis6991/impatient.nvim" })
 		use({ "wbthomason/packer.nvim" })
 
 		-- ui

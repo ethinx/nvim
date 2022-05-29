@@ -3,12 +3,14 @@ local M = {}
 function M.config()
 	local mappings = {
 		gd = 'lua require"telescope.builtin".lsp_definitions()',
-		gi = 'lua require"telescope.builtin".lsp_implementations()',
-		gr = 'lua require"telescope.builtin".lsp_references()',
+		-- gi = 'lua require"telescope.builtin".lsp_implementations()',
+		-- gr = 'lua require"telescope.builtin".lsp_references()',
+		gi = "Telescope lsp_implementations theme=ivy",
+		gr = "Telescope lsp_references theme=ivy",
 	}
 
 	local settings = {
-		-- mappings = mappings,
+		mappings = mappings,
 		on_attach = function(client, bufnr)
 			if client.name == "tsserver" then
 				require("nvim-lsp-setup.utils").disable_formatting(client)
