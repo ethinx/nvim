@@ -26,6 +26,7 @@ function M.config()
 			bashls = {},
 			cmake = {},
 			cssls = {},
+			clangd = require("nvim-lsp-setup.clangd_extensions").setup({}),
 			dockerls = {},
 			dotls = {},
 			-- groovyls = {},
