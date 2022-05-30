@@ -133,7 +133,10 @@ function M.setup()
 		})
 
 		-- editor
-		use({ "tpope/vim-commentary" })
+		use({
+			"tpope/vim-commentary",
+			config = require("editor.vim-commentary").config,
+		})
 		-- use { 'tpope/vim-surround' }
 		use({
 			"nvim-treesitter/nvim-treesitter",
