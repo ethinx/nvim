@@ -49,6 +49,7 @@ function M.config()
 			terraformls = {},
 			pyright = {},
 			rust_analyzer = {},
+			rnix = {},
 			vimls = {},
 			vuels = {},
 			yamlls = {},
@@ -63,7 +64,7 @@ function M.config()
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
 
-	require("completion.null-ls")
+	-- require("completion.null-ls")
 
 	-- local saga = require("lspsaga")
 	-- saga.init_lsp_saga({})

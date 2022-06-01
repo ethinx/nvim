@@ -17,6 +17,7 @@ local options = {
 	showcmd = true,
 	showmatch = true,
 	matchtime = 5,
+	ignorecase = true,
 	smartcase = true,
 	number = true,
 	completeopt = { "menu", "noselect" },

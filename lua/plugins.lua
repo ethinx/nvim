@@ -148,6 +148,14 @@ function M.setup()
 			config = require("editor.treesitter").config,
 		})
 
+    use ({
+      "RRethy/vim-illuminate",
+      config = function()
+        vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
+        vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
+      end,
+    })
+
 		-- completion
 		use({
 			"hrsh7th/nvim-cmp",
@@ -202,7 +210,7 @@ function M.setup()
 
 		use({
 			"phaazon/hop.nvim",
-			cmd = { "HopWord", "HopChar1" },
+			cmd = { "HopWord", "HopChar1", "HopLine" },
 			config = function()
 				require("hop").setup({})
 			end,
@@ -218,9 +226,9 @@ function M.setup()
 			end,
 		})
 
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-		})
+		-- use({
+		-- 	"jose-elias-alvarez/null-ls.nvim",
+		-- })
 
 		use({
 			"akinsho/toggleterm.nvim",
