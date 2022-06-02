@@ -29,6 +29,7 @@ keymap("v", "#", [[y?<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>]], default_opts)
 keymap("v", "ss", [[y:%s`<C-R>"``g<left><left>]], default_opts)
 
 keymap("", "<F2>", "<cmd>NvimTreeToggle<cr>", {})
+keymap("", "<F9>", "<cmd>SymbolsOutline<cr>", {})
 
 -- keymap('n', '<leader>w', ':w!<cr>', default_opts)
 

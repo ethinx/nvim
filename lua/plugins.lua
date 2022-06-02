@@ -134,6 +134,11 @@ function M.setup()
 		})
 
 		-- editor
+    use ({
+      "simrat39/symbols-outline.nvim",
+      config = require('editor.symbols-outline').config,
+    })
+
 		use({
 			"tpope/vim-commentary",
 			config = require("editor.vim-commentary").config,
