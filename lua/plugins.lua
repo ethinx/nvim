@@ -49,9 +49,10 @@ function M.setup()
 		-- ui
 		use({
 			-- "NLKNguyen/papercolor-theme",
-			"catppuccin/nvim",
+			-- "catppuccin/nvim",
+			"joshdick/onedark.vim",
 			config = function()
-				vim.cmd("colorscheme catppuccin")
+				vim.cmd("colorscheme onedark")
 			end,
 		})
 
@@ -206,7 +207,13 @@ function M.setup()
 		use({ "andymass/vim-matchup", event = "CursorMoved" })
 		use({ "chaoren/vim-wordmotion" })
 		use({ "wellle/targets.vim", event = "CursorMoved" })
-		use({ "unblevable/quick-scope", disable = false })
+		use({
+      "unblevable/quick-scope",
+      disable = false,
+      config = function()
+        vim.g.qs_filetype_blacklist = {'alpha'}
+      end,
+    })
 
 		use({
 			"phaazon/hop.nvim",
