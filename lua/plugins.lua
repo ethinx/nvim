@@ -56,6 +56,11 @@ function M.setup()
 			end,
 		})
 
+    use({
+      "kyazdani42/nvim-web-devicons",
+      config = require('ui.nvim-web-devicons').config,
+    })
+
 		use({
 			"goolord/alpha-nvim", -- startup screen
 			requires = {

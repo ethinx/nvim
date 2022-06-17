@@ -47,11 +47,19 @@ function M.config()
       tsserver = {}, -- javascript
       sumneko_lua = require("lua-dev").setup({
         lspconfig = {
-          diagnostics = { globals = { "vim", "packer_plugins" } },
           on_attach = function(client, _)
             require("nvim-lsp-setup.utils").disable_formatting(client)
           end,
-          telemetry = { enable = false },
+          settings = {
+            Lua = {
+              diagnostics = { globals = { "vim", "packer_plugins" } },
+              telemetry = { enable = false },
+              workspace = {
+                checkThirdParty = false,
+                preloadFileSize = 5000,
+              },
+            },
+          },
         },
       }),
       taplo = {}, -- toml
@@ -65,7 +73,6 @@ function M.config()
       yamlls = {},
     },
   }
-
   require("nvim-lsp-setup").setup(settings)
 
   require("lsp_signature").setup({})
