@@ -191,6 +191,8 @@ function M.setup()
 		use({
 			"junnplus/nvim-lsp-setup",
 			requires = {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
 				"williamboman/nvim-lsp-installer",
 				"folke/lua-dev.nvim",
 				"neovim/nvim-lspconfig",

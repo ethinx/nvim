@@ -25,6 +25,7 @@ function M.config()
       -- vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
     end,
     servers = {
+      beancount = {},
       ansiblels = {},
       bashls = {},
       cmake = {},
