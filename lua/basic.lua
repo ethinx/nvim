@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.python3_host_prog = "/usr/bin/python3" -- for beancount
+
 local options = {
 	backspace = "indent,eol,start",
 	hlsearch = true,
