@@ -50,6 +50,9 @@ function M.setup()
 		use({
 			-- "NLKNguyen/papercolor-theme",
 			-- "catppuccin/nvim",
+
+			-- "lourenci/github-colors",
+
 			"joshdick/onedark.vim",
 			config = function()
 				vim.cmd("colorscheme onedark")

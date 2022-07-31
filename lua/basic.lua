@@ -4,53 +4,54 @@ vim.g.maplocalleader = " "
 vim.g.python3_host_prog = "/usr/bin/python3" -- for beancount
 
 local options = {
-	backspace = "indent,eol,start",
-	hlsearch = true,
-	incsearch = true,
-	history = 300,
-	fileencodings = { "ucs-bom", "utf-8", "cp936", "gb18030", "big5", "euc-jp", "euc-kr", "latin1" },
-	encoding = "utf8",
-	termencoding = "utf8",
-	autoread = true,
-	whichwrap = "s,<,>,[,]",
-	backup = false,
-	wb = false,
-	swapfile = false,
-	showcmd = true,
-	showmatch = true,
-	matchtime = 5,
-	ignorecase = true,
-	smartcase = true,
-	number = true,
-	completeopt = { "menu", "noselect" },
+  backspace = "indent,eol,start",
+  hlsearch = true,
+  incsearch = true,
+  history = 300,
+  fileencodings = { "ucs-bom", "utf-8", "cp936", "gb18030", "big5", "euc-jp", "euc-kr", "latin1" },
+  encoding = "utf8",
+  termencoding = "utf8",
+  autoread = true,
+  whichwrap = "s,<,>,[,]",
+  backup = false,
+  wb = false,
+  swapfile = false,
+  showcmd = true,
+  showmatch = true,
+  matchtime = 5,
+  ignorecase = true,
+  smartcase = true,
+  number = true,
+  completeopt = { "menu", "noselect" },
 
-	syntax = "on",
-	mouse = "",
+  syntax = "on",
+  mouse = "",
 
-	foldenable = true,
-	fdm = "indent",
-	foldlevel = 999,
-	splitright = true,
+  foldenable = true,
+  fdm = "indent",
+  foldlevel = 999,
+  splitright = true,
 
-	lazyredraw = true,
-	signcolumn = "yes",
+  lazyredraw = true,
+  signcolumn = "yes",
 
-	-- list = true,
-	-- listchars = 'tab:»·,trail:·,nbsp:·,extends:>,precedes:<',
-	tags = "./.tags;,.tags",
+  -- list = true,
+  -- listchars = 'tab:»·,trail:·,nbsp:·,extends:>,precedes:<',
+  tags = "./.tags;,.tags",
 
-	ffs = "unix,dos,mac",
-	suffixes = ".bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class",
+  ffs = "unix,dos,mac",
+  suffixes = ".bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class",
 
-	tabstop = 4,
-	shiftwidth = 4,
-	expandtab = true,
-	smarttab = true,
-	autoindent = true,
+  tabstop = 4,
+  shiftwidth = 4,
+  expandtab = true,
+  smarttab = true,
+  autoindent = true,
+  termguicolors = true,
 }
 
 for k, v in pairs(options) do
-	vim.opt[k] = v
+  vim.opt[k] = v
 end
 
 vim.opt.filetype = "on"
@@ -79,5 +80,5 @@ vim.opt.wildignore = vim.opt.wildignore + "*.gba,*.sfc,*.078,*.nds,*.smd,*.smc"
 vim.opt.wildignore = vim.opt.wildignore + "*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android"
 
 if string.match(vim.env.TERM, "256color") and vim.env.TMUX ~= "" then
-	vim.go.t_ut = ""
+  vim.go.t_ut = ""
 end
