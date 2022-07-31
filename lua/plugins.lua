@@ -256,6 +256,12 @@ function M.setup()
       end,
     })
 
+    -- https://xu3352.github.io/linux/2018/10/18/vim-table-format-in-html-or-markdown
+    -- https://devhints.io/vim-easyalign
+    use({
+      "junegunn/vim-easy-align"
+    })
+
     if packer_bootstrap then
       print("Restart Neovim required after installation!")
       require("packer").sync()
