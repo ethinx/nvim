@@ -3,8 +3,6 @@ local M = {}
 function M.config()
   local mappings = {
     gd = 'lua require"telescope.builtin".lsp_definitions()',
-    -- gi = 'lua require"telescope.builtin".lsp_implementations()',
-    -- gr = 'lua require"telescope.builtin".lsp_references()',
     gi = "Telescope lsp_implementations theme=ivy",
     gr = "Telescope lsp_references theme=ivy",
   }
@@ -48,9 +46,9 @@ function M.config()
       tsserver = {}, -- javascript
       sumneko_lua = require("lua-dev").setup({
         lspconfig = {
-          on_attach = function(client, _)
-            require("nvim-lsp-setup.utils").disable_formatting(client)
-          end,
+          -- on_attach = function(client, _)
+          --   require("nvim-lsp-setup.utils").disable_formatting(client)
+          -- end,
           settings = {
             Lua = {
               diagnostics = { globals = { "vim", "packer_plugins" } },
@@ -78,9 +76,17 @@ function M.config()
 
   require("lsp_signature").setup({})
 
+  require('lsp_lines').setup()
+
   local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
+
+  -- disable virtual_text and use whynothugo/lsp_lines.nvim instread
+  vim.diagnostic.config({
+    update_in_insert = false,
+    virtual_text = false,
+  })
 
   -- require("completion.null-ls")
 

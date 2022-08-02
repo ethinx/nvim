@@ -73,7 +73,7 @@ function M.setup()
     })
 
     use({
-      "SmiteshP/nvim-gps",
+      "SmiteshP/nvim-gps", -- TODO: use https://github.com/SmiteshP/nvim-navic
       requires = {
         "nvim-treesitter/nvim-treesitter",
         "windwp/nvim-autopairs",
@@ -142,7 +142,7 @@ function M.setup()
     })
 
     -- editor
-    use ({
+    use({
       "simrat39/symbols-outline.nvim",
       config = require('editor.symbols-outline').config,
     })
@@ -159,11 +159,13 @@ function M.setup()
       config = require("editor.treesitter").config,
     })
 
-    use ({
+    use({
       "RRethy/vim-illuminate",
       config = function()
-        vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{reverse=true, wrap=true}<cr>', {noremap=true})
-        vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true, wrap=true}<cr>', {noremap=true})
+        vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{reverse=true, wrap=true}<cr>'
+          , { noremap = true })
+        vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true, wrap=true}<cr>'
+          , { noremap = true })
       end,
     }) -- select and move between words under cursor
 
@@ -200,6 +202,7 @@ function M.setup()
         "RRethy/vim-illuminate",
         "p00f/clangd_extensions.nvim",
         -- "glepnir/lspsaga.nvim",
+        'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
       },
       config = require("completion.lsp-setup").config,
     })
@@ -220,12 +223,12 @@ function M.setup()
     use({ "chaoren/vim-wordmotion" }) -- 单词移动
     use({ "wellle/targets.vim", event = "CursorMoved" }) -- text object selection
     use({
-      "unblevable/quick-scope",
+      "unblevable/quick-scope", -- inline moving
       disable = false,
       config = function()
-        vim.g.qs_filetype_blacklist = {'alpha'}
+        vim.g.qs_filetype_blacklist = { 'alpha' }
       end,
-    })  -- inline move
+    })
 
     use({
       "phaazon/hop.nvim",
@@ -260,6 +263,29 @@ function M.setup()
     -- https://devhints.io/vim-easyalign
     use({
       "junegunn/vim-easy-align"
+    })
+
+    -- https://github.com/mg979/vim-visual-multi/wiki/Quick-start
+    -- https://yaocc.cc/2021/05/17/VIM%E5%A4%9A%E5%85%89%E6%A0%87%E6%8F%92%E4%BB%B6%E2%80%94%E2%80%94%E6%95%88%E7%8E%87MAX/
+    use({
+      'mg979/vim-visual-multi'
+    })
+
+    use({
+      'folke/trouble.nvim',
+      config = require('helper.trouble').config,
+    })
+
+    use({
+      'linty-org/readline.nvim',
+      event = "InsertEnter",
+      config = require('editor.readline').config
+    })
+
+    -- better substitution
+    use({
+      'tpope/vim-abolish',
+      cmd = 'S',
     })
 
     if packer_bootstrap then
