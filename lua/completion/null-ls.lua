@@ -18,6 +18,6 @@ null_ls.setup({
 		-- diagnostics.flake8
 	},
 	on_attach = function(client)
-		require("nvim-lsp-setup.utils").format_on_save(client)
+		require("lsp-setup.utils").format_on_save(client)
 	end,
 })

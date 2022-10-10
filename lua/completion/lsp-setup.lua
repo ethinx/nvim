@@ -14,21 +14,27 @@ function M.config()
     mappings = mappings,
     on_attach = function(client, bufnr)
       if client.name == "tsserver" then
-        require("nvim-lsp-setup.utils").disable_formatting(client)
+        require("lsp-setup.utils").disable_formatting(client)
       end
-      require("nvim-lsp-setup.utils").format_on_save(client)
+      require("lsp-setup.utils").format_on_save(client)
       require("illuminate").on_attach(client)
       -- TODO: check the alt key on macOS
       -- vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
       -- vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
     end,
     servers = {
-      beancount = {},
+      beancount = {
+        init_options = {
+          journal_file = "/Users/ethinx/repo/beancount/beans/main.bean",
+          journalFile = "/Users/ethinx/repo/beancount/beans/main.bean"
+        }
+        -- on_attach = require('polarmutex.lsp.attach').default_custom_on_attach
+      },
       ansiblels = {},
       bashls = {},
       cmake = {},
       cssls = {},
-      -- clangd = require("nvim-lsp-setup.clangd_extensions").setup({
+      -- clangd = require("lsp-setup.clangd_extensions").setup({
       --   -- root_dir = require('lspconfig.util').root_pattern("compile_commands.json", "compile_flags.txt", ".git", "CMakeLists.txt", "src")
       --   -- root_dir =    function(fname)
       --   --   local filename = util.path.is_absolute(fname) and fname or util.path.join(vim.loop.cwd(), fname)
@@ -47,7 +53,7 @@ function M.config()
       sumneko_lua = require("lua-dev").setup({
         lspconfig = {
           -- on_attach = function(client, _)
-          --   require("nvim-lsp-setup.utils").disable_formatting(client)
+          --   require("lsp-setup.utils").disable_formatting(client)
           -- end,
           settings = {
             Lua = {
@@ -72,7 +78,7 @@ function M.config()
       yamlls = {},
     },
   }
-  require("nvim-lsp-setup").setup(settings)
+  require("lsp-setup").setup(settings)
 
   require("lsp_signature").setup({})
 
