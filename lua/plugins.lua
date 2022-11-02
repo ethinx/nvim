@@ -196,7 +196,7 @@ function M.setup()
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "williamboman/nvim-lsp-installer",
-        "folke/lua-dev.nvim",
+        "folke/neodev.nvim",
         "neovim/nvim-lspconfig",
         "ray-x/lsp_signature.nvim",
         "RRethy/vim-illuminate",

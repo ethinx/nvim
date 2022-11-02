@@ -50,7 +50,7 @@ function M.config()
       jsonls = {},
       jsonnet_ls = {},
       tsserver = {}, -- javascript
-      sumneko_lua = require("lua-dev").setup({
+      sumneko_lua = require("neodev").setup({
         lspconfig = {
           -- on_attach = function(client, _)
           --   require("lsp-setup.utils").disable_formatting(client)
