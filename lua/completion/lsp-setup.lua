@@ -16,6 +16,11 @@ function M.config()
       if client.name == "tsserver" then
         require("lsp-setup.utils").disable_formatting(client)
       end
+
+      if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
+        vim.diagnostic.disable()
+      end
+
       require("lsp-setup.utils").format_on_save(client)
       require("illuminate").on_attach(client)
       -- TODO: check the alt key on macOS
@@ -50,23 +55,24 @@ function M.config()
       jsonls = {},
       jsonnet_ls = {},
       tsserver = {}, -- javascript
-      sumneko_lua = require("neodev").setup({
-        lspconfig = {
-          -- on_attach = function(client, _)
-          --   require("lsp-setup.utils").disable_formatting(client)
-          -- end,
-          settings = {
-            Lua = {
-              diagnostics = { globals = { "vim", "packer_plugins" } },
-              telemetry = { enable = false },
-              workspace = {
-                checkThirdParty = false,
-                preloadFileSize = 5000,
-              },
-            },
-          },
-        },
-      }),
+      lua_ls = {},
+      -- sumneko_lua = require("neodev").setup({
+      --   lspconfig = {
+      --     -- on_attach = function(client, _)
+      --     --   require("lsp-setup.utils").disable_formatting(client)
+      --     -- end,
+      --     settings = {
+      --       Lua = {
+      --         diagnostics = { globals = { "vim", "packer_plugins" } },
+      --         telemetry = { enable = false },
+      --         workspace = {
+      --           checkThirdParty = false,
+      --           preloadFileSize = 5000,
+      --         },
+      --       },
+      --     },
+      --   },
+      -- }),
       taplo = {}, -- toml
       tailwindcss = {},
       terraformls = {},
@@ -78,12 +84,6 @@ function M.config()
       yamlls = {},
     },
   }
-  require("lsp-setup").setup(settings)
-
-  require("lsp_signature").setup({})
-
-  require('lsp_lines').setup()
-
   local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
@@ -93,6 +93,13 @@ function M.config()
     update_in_insert = false,
     virtual_text = false,
   })
+
+  require("lsp-setup").setup(settings)
+
+  require("lsp_signature").setup({})
+
+  require('lsp_lines').setup()
+
 
   -- require("completion.null-ls")
 

@@ -46,6 +46,8 @@ function M.setup()
     use({ "lewis6991/impatient.nvim" })
     use({ "wbthomason/packer.nvim" })
 
+    use({ "towolf/vim-helm" })
+
     -- ui
     use({
       -- "NLKNguyen/papercolor-theme",
