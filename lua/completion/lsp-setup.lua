@@ -7,6 +7,8 @@ function M.config()
     gr = "Telescope lsp_references theme=ivy",
   }
 
+  require('neodev').setup({})
+
   -- local util = require 'lspconfig.util'
   -- local root_pattern = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "CMakeLists.txt", "src");
 
@@ -55,24 +57,28 @@ function M.config()
       jsonls = {},
       jsonnet_ls = {},
       tsserver = {}, -- javascript
-      lua_ls = {},
-      -- sumneko_lua = require("neodev").setup({
-      --   lspconfig = {
-      --     -- on_attach = function(client, _)
-      --     --   require("lsp-setup.utils").disable_formatting(client)
-      --     -- end,
-      --     settings = {
-      --       Lua = {
-      --         diagnostics = { globals = { "vim", "packer_plugins" } },
-      --         telemetry = { enable = false },
-      --         workspace = {
-      --           checkThirdParty = false,
-      --           preloadFileSize = 5000,
-      --         },
-      --       },
-      --     },
-      --   },
-      -- }),
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = {
+                "globals",
+                "vim",
+                "packer_plugins",
+              }
+            },
+            telemetry = { enable = false },
+            workspace = {
+              checkThirdParty = false,
+              preloadFileSize = 5000,
+              library = {
+                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                [vim.fn.stdpath("config") .. "/lua"] = true,
+              },
+            },
+          },
+        },
+      },
       taplo = {}, -- toml
       tailwindcss = {},
       terraformls = {},
