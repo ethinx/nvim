@@ -71,7 +71,23 @@ local function open_nvim_tree(data)
   require("nvim-tree.api").tree.toggle({ focus = false })
 end
 
+local function on_attach(bufnr)
+  local api = require('nvim-tree.api')
+
+  local function opts(desc)
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  vim.keymap.set('n', "o", api.node.open.edit, opts("Go to file"))
+  vim.keymap.set('n', "<CR>", api.node.open.edit, opts("Go to file"))
+  vim.keymap.set('n', "<C-v>", api.node.open.vertical, opts('Open: vsplit'))
+  vim.keymap.set('n', "<C-s>", api.node.open.horizontal, opts('Open: split'))
+  vim.keymap.set('n', "v", api.node.open.vertical, opts('Open: vsplit'))
+  vim.keymap.set('n', "s", api.node.open.horizontal, opts('Open: split'))
+end
+
 nvim_tree.setup({
+  on_attach = on_attach,
   disable_netrw = true,
   hijack_netrw = true,
   open_on_tab = false,
@@ -90,6 +106,7 @@ nvim_tree.setup({
     icons = {
       glyphs = nvim_tree_icons,
     },
+    root_folder_label = false,
   },
   update_focused_file = {
     enable = true,
@@ -112,21 +129,22 @@ nvim_tree.setup({
   view = {
     width = 30,
     -- height = 30,
-    hide_root_folder = true,
+    -- hide_root_folder = true,
+    -- root_folder_label = true,
     side = "left",
-    mappings = {
-      custom_only = false,
-      list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-        { key = "h", cb = tree_cb("close_node") },
-        { key = '<C-v>', cb = tree_cb('vsplit') },
-        { key = '<C-s>', cb = tree_cb('split') },
-        { key = 'v', cb = tree_cb('vsplit') },
-        { key = 's', cb = tree_cb('split') },
-        { key = '-', cb = '<Plug>(choosewin)' },
-        { key = '<C-t>', cb = ':ToggleTerm<cr>' },
-      },
-    },
+    -- mappings = {
+    --   custom_only = false,
+    --   list = {
+    --     { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+    --     { key = "h", cb = tree_cb("close_node") },
+    --     { key = '<C-v>', cb = tree_cb('vsplit') },
+    --     { key = '<C-s>', cb = tree_cb('split') },
+    --     { key = 'v', cb = tree_cb('vsplit') },
+    --     { key = 's', cb = tree_cb('split') },
+    --     { key = '-', cb = '<Plug>(choosewin)' },
+    --     { key = '<C-t>', cb = ':ToggleTerm<cr>' },
+    --   },
+    -- },
     number = false,
     relativenumber = false,
   },
