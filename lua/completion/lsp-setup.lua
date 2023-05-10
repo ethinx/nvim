@@ -1,11 +1,22 @@
 local M = {}
 
 function M.config()
+  -- DEFAULT KEYMAPS
+  -- gD = vim.lsp.buf.declaration,
+  -- gd = vim.lsp.buf.definition,
+  -- gi = vim.lsp.buf.implementation,
+  -- gr = vim.lsp.buf.references,
+  -- K = vim.lsp.buf.hover,
+  -- ['<C-k>'] = vim.lsp.buf.signature_help,
+  -- ['<space>rn'] = vim.lsp.buf.rename,
+  -- ['<space>ca'] = vim.lsp.buf.code_action,
+  -- ['<space>f'] = vim.lsp.buf.formatting, -- compatible with nvim-0.7
+  -- ['<space>e'] = vim.diagnostic.open_float,
+  -- ['[d'] = vim.diagnostic.goto_prev,
+  -- [']d'] = vim.diagnostic.goto_next,
   local mappings = {
-    gd = 'lua require"telescope.builtin".lsp_definitions()',
     gi = ":Telescope lsp_implementations theme=ivy<cr>",
     gr = ":Telescope lsp_references theme=ivy<cr>",
-    -- gr = "lua vim.lsp.buf.references()"
   }
 
   require('neodev').setup({})
