@@ -3,8 +3,9 @@ local M = {}
 function M.config()
   local mappings = {
     gd = 'lua require"telescope.builtin".lsp_definitions()',
-    gi = "Telescope lsp_implementations theme=ivy",
-    gr = "Telescope lsp_references theme=ivy",
+    gi = ":Telescope lsp_implementations theme=ivy<cr>",
+    gr = ":Telescope lsp_references theme=ivy<cr>",
+    -- gr = "lua vim.lsp.buf.references()"
   }
 
   require('neodev').setup({})
