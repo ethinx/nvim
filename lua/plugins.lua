@@ -61,10 +61,10 @@ function M.setup()
       end,
     })
 
-    use({
-      "kyazdani42/nvim-web-devicons",
-      config = require('ui.nvim-web-devicons').config,
-    })
+    -- use({
+    --   "kyazdani42/nvim-web-devicons",
+    --   config = require('ui.nvim-web-devicons').config,
+    -- })
 
     use({
       "goolord/alpha-nvim", -- startup screen
@@ -221,7 +221,7 @@ function M.setup()
     })
 
     -- Motions
-    use({ "andymass/vim-matchup", event = "CursorMoved" }) -- 语法块 tag 跳转
+    -- use({ "andymass/vim-matchup", event = "CursorMoved" }) -- 语法块 tag 跳转
     use({ "chaoren/vim-wordmotion" }) -- 单词移动
     use({ "wellle/targets.vim", event = "CursorMoved" }) -- text object selection
     use({
