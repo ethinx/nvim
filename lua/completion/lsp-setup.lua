@@ -20,6 +20,7 @@ function M.config()
   }
 
   require('neodev').setup({})
+  local navic = require('nvim-navic')
 
   -- local util = require 'lspconfig.util'
   -- local root_pattern = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "CMakeLists.txt", "src");
@@ -35,8 +36,14 @@ function M.config()
         vim.diagnostic.disable()
       end
 
+      if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+      end
+
       require("lsp-setup.utils").format_on_save(client)
       require("illuminate").on_attach(client)
+      require("lsp-inlayhints").on_attach(client, bufnr)
+
       -- TODO: check the alt key on macOS
       -- vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
       -- vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
@@ -64,7 +71,20 @@ function M.config()
       dockerls = {},
       dotls = {},
       -- groovyls = {},
-      gopls = {},
+      gopls = {
+        settings = {
+          gopls = {
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            }
+          },
+        },
+      },
       html = {},
       jsonls = {},
       jsonnet_ls = {},
@@ -117,7 +137,6 @@ function M.config()
   require("lsp_signature").setup({})
 
   require('lsp_lines').setup()
-
 
   -- require("completion.null-ls")
 

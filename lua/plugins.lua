@@ -75,7 +75,7 @@ function M.setup()
     })
 
     use({
-      "SmiteshP/nvim-gps", -- TODO: use https://github.com/SmiteshP/nvim-navic
+      "SmiteshP/nvim-navic",
       requires = {
         "nvim-treesitter/nvim-treesitter",
         "windwp/nvim-autopairs",
@@ -207,6 +207,14 @@ function M.setup()
         'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
       },
       config = require("completion.lsp-setup").config,
+    })
+
+    use({
+      "lvimuser/lsp-inlayhints.nvim",
+      branch = "anticonceal",
+      config = function()
+        require('helper/lsp-inlayhints')
+      end,
     })
 
     use({
