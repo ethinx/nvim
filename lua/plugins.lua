@@ -1,10 +1,11 @@
 return {
   {
     "towolf/vim-helm",
-    lazy = true,
+    event = "BufRead",
   },
   {
     "joshdick/onedark.vim",
+    lazy = true,
     config = function()
       vim.cmd("colorscheme onedark")
     end,
@@ -13,18 +14,29 @@ return {
     "goolord/alpha-nvim", -- startup screen
     dependencies = {
       "kyazdani42/nvim-web-devicons",
+      {
+        "joshdick/onedark.vim",
+        config = function()
+          vim.cmd("colorscheme onedark")
+        end,
+      },
     },
     config = require('ui.alpha').dashboard
   },
   {
     "SmiteshP/nvim-navic",
+    event = {
+      "BufRead",
+      "CursorMoved",
+    },
     dependencies = {
-      -- "nvim-treesitter/nvim-treesitter",
+      "nvim-treesitter/nvim-treesitter",
       "windwp/nvim-autopairs",
     },
   },
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     config = require("ui.lualine").config,
     dependencies = {
       {
@@ -35,12 +47,14 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
+    event = "InsertEnter",
     config = function()
       require("ui.gitsigns")
     end,
   },
   {
     "akinsho/bufferline.nvim",
+    event = "VeryLazy",
     dependencies = {
       "moll/vim-bbye",
     },
@@ -50,19 +64,28 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
     config = function()
       require("ui.indent-blankline")
     end,
   },
 
-  { "editorconfig/editorconfig-vim" },
-  { "tpope/vim-repeat" },
+  {
+    "editorconfig/editorconfig-vim",
+    lazy = true,
+  },
+  {
+    "tpope/vim-repeat",
+    lazy = true,
+  },
   {
     "folke/which-key.nvim",
     config = require("helper.whichkey").config,
+    event = "VeryLazy",
   },
   {
     "kyazdani42/nvim-tree.lua",
+    event = "VeryLazy",
     config = function()
       require("helper.nvim-tree")
     end,
@@ -72,6 +95,7 @@ return {
   },
   {
     "ahmedkhalf/project.nvim",
+    event = "VeryLazy",
     dependencies = {
       "nvim-telescope/telescope.nvim",
     },
@@ -83,12 +107,17 @@ return {
   -- editor
   {
     "simrat39/symbols-outline.nvim",
+    event = "VeryLazy",
     config = require('editor.symbols-outline').config,
   },
 
   -- comment
   {
     "tpope/vim-commentary",
+    event = {
+      "CursorMoved",
+      "BufRead",
+    },
     config = require("editor.vim-commentary").config,
   },
 
@@ -100,16 +129,18 @@ return {
   },
   {
     "RRethy/vim-illuminate",
+    event = "BufRead",
     config = function()
       vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{reverse=true, wrap=true}<cr>'
-        , { noremap = true })
+      , { noremap = true })
       vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true, wrap=true}<cr>'
-        , { noremap = true })
+      , { noremap = true })
     end,
   }, -- select and move between words under cursor
 
   {
     "hrsh7th/nvim-cmp",
+    event = { "InsertEnter", "CmdlineEnter" },
     config = function()
       require("completion.cmp")
     end,
@@ -120,14 +151,13 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
+      "hrsh7th/cmp-nvim-lsp",
     },
   },
 
   {
-    "hrsh7th/cmp-nvim-lsp",
-  },
-  {
     "junnplus/nvim-lsp-setup",
+    event = { "BufRead", "CmdlineEnter" },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -144,6 +174,7 @@ return {
   },
   {
     "lvimuser/lsp-inlayhints.nvim",
+    event = "BufRead",
     branch = "anticonceal",
     config = function()
       require('helper/lsp-inlayhints')
@@ -152,6 +183,7 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-lua/popup.nvim",
@@ -163,10 +195,17 @@ return {
 
   -- Motions
   -- use({ "andymass/vim-matchup", event = "CursorMoved" }) -- 语法块 tag 跳转
-  { "chaoren/vim-wordmotion" }, -- 单词移动
-  { "wellle/targets.vim", event = "CursorMoved" }, -- text object selection
+  {
+    "chaoren/vim-wordmotion",
+    event = "BufRead",
+  }, -- 单词移动
+  {
+    "wellle/targets.vim",
+    event = "CursorMoved"
+  },                          -- text object selection
   {
     "unblevable/quick-scope", -- inline moving
+    event = "BufRead",
     config = function()
       vim.g.qs_filetype_blacklist = { 'alpha' }
     end,
@@ -174,6 +213,7 @@ return {
 
   {
     "phaazon/hop.nvim",
+    event = "BufRead",
     cmd = { "HopWord", "HopChar1", "HopLine" },
     config = function()
       require("hop").setup({})
@@ -182,6 +222,7 @@ return {
 
   {
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
     dependencies = {
       "nvim-cmp",
     },
@@ -196,6 +237,7 @@ return {
 
   {
     "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
     config = function()
       require("helper.toggleterm")
     end,
@@ -204,17 +246,20 @@ return {
   -- https://xu3352.github.io/linux/2018/10/18/vim-table-format-in-html-or-markdown
   -- https://devhints.io/vim-easyalign
   {
-    "junegunn/vim-easy-align"
+    "junegunn/vim-easy-align",
+    event = "CursorMoved",
   },
 
   -- https://github.com/mg979/vim-visual-multi/wiki/Quick-start
   -- https://yaocc.cc/2021/05/17/VIM%E5%A4%9A%E5%85%89%E6%A0%87%E6%8F%92%E4%BB%B6%E2%80%94%E2%80%94%E6%95%88%E7%8E%87MAX/
   {
-    'mg979/vim-visual-multi'
+    'mg979/vim-visual-multi',
+    event = "CursorMoved",
   },
 
   {
     'folke/trouble.nvim',
+    event = "VeryLazy",
     config = require('helper.trouble').config,
   },
 
@@ -227,6 +272,7 @@ return {
   -- better substitution
   {
     'tpope/vim-abolish',
+    event = "CursorMoved",
     cmd = 'S',
   },
 }
