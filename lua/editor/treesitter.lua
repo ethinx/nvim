@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  require("nvim-treesitter")
+  -- require("nvim-treesitter")
   vim.g.foldmethod = "expr"
   vim.g.foldexpr = "nvim_treesitter#foldexpr()"
 
