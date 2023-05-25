@@ -1,4 +1,5 @@
-local keymap = vim.api.nvim_set_keymap
+-- local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local default_opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
@@ -39,3 +40,6 @@ keymap("", "<F9>", "<cmd>SymbolsOutline<cr>", {})
 
 -- keymap('', '<leader>qa', ':qa!<cr>', default_opts)
 -- keymap('', '<leader>wq', ':wq<cr>', default_opts)
+keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+-- keymap("n", "<leader>cr", "<cmd>Lspsaga rename ++project<CR>")
+keymap("n", "<leader>cr", "<cmd>Lspsaga rename<CR>")
