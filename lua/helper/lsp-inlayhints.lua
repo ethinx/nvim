@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-local icons = require('../icons')
+local icons = require('icons')
 
 hints.setup {
   icons = icons.kind_icons,

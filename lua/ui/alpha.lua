@@ -86,7 +86,7 @@ function M.dashboard()
 	}
 
 	local function footer()
-		local total_plugins = #vim.tbl_keys(packer_plugins)
+		-- local total_plugins = #vim.tbl_keys(packer_plugins)
 		return " v"
 			.. vim.version().major
 			.. "."
@@ -94,7 +94,7 @@ function M.dashboard()
 			.. "."
 			.. vim.version().patch
 			.. "   "
-			.. total_plugins
+			-- .. total_plugins
 			.. " plugins"
 	end
 

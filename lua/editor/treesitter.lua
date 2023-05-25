@@ -24,9 +24,9 @@ function M.config()
       "json",
       "yaml",
       "toml",
-      -- "javascript",
-      -- "typescript",
-      -- "tsx",
+      "javascript",
+      "typescript",
+      "tsx",
       "vue",
       "python",
       "perl",
@@ -38,6 +38,7 @@ function M.config()
       "nix",
     },
     sync_install = false,
+    auto_install = false,
 
     highlight = {
       enable = true,
