@@ -27,7 +27,7 @@ return {
     "SmiteshP/nvim-navic",
     event = {
       "BufRead",
-      "CursorMoved",
+      -- "CursorMoved",
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -36,7 +36,7 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    event = "BufRead",
     config = require("ui.lualine").config,
     dependencies = {
       {
@@ -54,7 +54,7 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
-    event = "VeryLazy",
+    event = "BufRead",
     dependencies = {
       "moll/vim-bbye",
     },
@@ -85,23 +85,17 @@ return {
   },
   {
     "kyazdani42/nvim-tree.lua",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    cmd = {
+      "NvimTreeOpen",
+      "NvimTreeToggle",
+    },
     config = function()
       require("helper.nvim-tree")
     end,
     dependencies = {
       "kyazdani42/nvim-web-devicons",
     },
-  },
-  {
-    "ahmedkhalf/project.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
-    config = function()
-      require("helper.project")
-    end,
   },
 
   -- editor
@@ -140,7 +134,10 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
-    event = { "InsertEnter", "CmdlineEnter" },
+    event = {
+      "InsertEnter",
+      -- "CmdlineEnter"
+    },
     config = function()
       require("completion.cmp")
     end,
@@ -148,7 +145,10 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      "L3MON4D3/LuaSnip",
+      {
+        "L3MON4D3/LuaSnip",
+        event = "BufRead",
+      },
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
       "hrsh7th/cmp-nvim-lsp",
@@ -157,7 +157,10 @@ return {
 
   {
     "junnplus/nvim-lsp-setup",
-    event = { "BufRead", "CmdlineEnter" },
+    event = {
+      "BufRead",
+      -- "CmdlineEnter"
+    },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -167,7 +170,6 @@ return {
       "ray-x/lsp_signature.nvim",
       "RRethy/vim-illuminate",
       "p00f/clangd_extensions.nvim",
-      -- "glepnir/lspsaga.nvim",
       'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
     },
     config = require("completion.lsp-setup").config,
@@ -183,10 +185,21 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    cmd = "Telescope",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-lua/popup.nvim",
+      {
+        "ahmedkhalf/project.nvim",
+        -- event = "VeryLazy",
+        -- dependencies = {
+        --   "nvim-telescope/telescope.nvim",
+        -- },
+        config = function()
+          require("helper.project")
+        end,
+      },
     },
     config = function()
       require("helper.telescope")
@@ -280,7 +293,11 @@ return {
     "glepnir/lspsaga.nvim",
     event = "LspAttach",
     config = function()
-      require("lspsaga").setup({})
+      require("lspsaga").setup({
+        symbol_in_winbar = {
+          enable = false,
+        },
+      })
     end,
     dependencies = {
       {
@@ -289,6 +306,13 @@ return {
       },
       --Please make sure you install markdown and markdown_inline parser
       { "nvim-treesitter/nvim-treesitter" }
+    }
+  },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    opts = {
+      -- add any custom options here
     }
   },
 }
