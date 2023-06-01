@@ -17,6 +17,16 @@ function M.config()
   local mappings = {
     gi = ":Telescope lsp_implementations theme=ivy<cr>",
     gr = ":Telescope lsp_references theme=ivy<cr>",
+    gD = vim.lsp.buf.declaration,
+    gd = vim.lsp.buf.definition,
+    K = vim.lsp.buf.hover,
+    ['<C-k>'] = vim.lsp.buf.signature_help,
+    ['<space>rn'] = vim.lsp.buf.rename,
+    -- ['<space>ca'] = vim.lsp.buf.code_action,
+    ['<space>f'] = vim.lsp.buf.formatting, -- compatible with nvim-0.7
+    ['<space>e'] = vim.diagnostic.open_float,
+    ['[d'] = vim.diagnostic.goto_prev,
+    [']d'] = vim.diagnostic.goto_next,
   }
 
   require('neodev').setup({})
@@ -26,6 +36,7 @@ function M.config()
   -- local root_pattern = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "CMakeLists.txt", "src");
 
   local settings = {
+    default_mappings = false,
     mappings = mappings,
     on_attach = function(client, bufnr)
       if client.name == "tsserver" then

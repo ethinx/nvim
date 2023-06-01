@@ -40,6 +40,7 @@ keymap("", "<F9>", "<cmd>SymbolsOutline<cr>", {})
 
 -- keymap('', '<leader>qa', ':qa!<cr>', default_opts)
 -- keymap('', '<leader>wq', ':wq<cr>', default_opts)
-keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", default_opts)
+-- keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", default_opts)
 -- keymap("n", "<leader>cr", "<cmd>Lspsaga rename ++project<CR>")
 keymap("n", "<leader>cr", "<cmd>Lspsaga rename<CR>")
