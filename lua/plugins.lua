@@ -85,7 +85,7 @@ return {
   },
   {
     "kyazdani42/nvim-tree.lua",
-    -- event = "VeryLazy",
+    event = "BufEnter",
     cmd = {
       "NvimTreeOpen",
       "NvimTreeToggle",
