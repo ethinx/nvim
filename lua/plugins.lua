@@ -280,6 +280,7 @@ return {
   },
 
   {
+    -- 'linty-org/readline.nvim',
     'assistcontrol/readline.nvim',
     event = "InsertEnter",
     config = require('editor.readline').config
