@@ -86,8 +86,9 @@ return {
     event = "VeryLazy",
   },
   {
-    "kyazdani42/nvim-tree.lua",
-    event = "BufEnter",
+    -- "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
+    -- event = "BufEnter",
     cmd = {
       "NvimTreeOpen",
       "NvimTreeToggle",
@@ -96,7 +97,7 @@ return {
       require("helper.nvim-tree")
     end,
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
     },
   },
 

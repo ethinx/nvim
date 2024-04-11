@@ -74,7 +74,6 @@ local function on_attach(bufnr)
   vim.keymap.set('n', '<C-s>', api.node.open.horizontal, opts('Open: Horizontal Split'))
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
   vim.keymap.set('n', 's', api.node.open.horizontal, opts('Open: Horizontal Split'))
-
 end
 
 -- following options are the default
@@ -105,22 +104,6 @@ if not status_ok then
   return
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
-
--- Replaces auto_close
-local tree_cb = nvim_tree_config.nvim_tree_callback
-vim.api.nvim_create_autocmd("BufEnter", {
-  nested = true,
-  callback = function()
-    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-      vim.cmd("quit")
-    end
-  end,
-})
-
 local function open_nvim_tree(data)
   local IGNORED_FT = {
     "startify",
@@ -148,21 +131,6 @@ local function open_nvim_tree(data)
 
   -- open the tree but don't focus it
   require("nvim-tree.api").tree.toggle({ focus = false })
-end
-
-local function on_attach(bufnr)
-  local api = require('nvim-tree.api')
-
-  local function opts(desc)
-    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  end
-
-  vim.keymap.set('n', "o", api.node.open.edit, opts("Go to file"))
-  vim.keymap.set('n', "<CR>", api.node.open.edit, opts("Go to file"))
-  vim.keymap.set('n', "<C-v>", api.node.open.vertical, opts('Open: vsplit'))
-  vim.keymap.set('n', "<C-s>", api.node.open.horizontal, opts('Open: split'))
-  vim.keymap.set('n', "v", api.node.open.vertical, opts('Open: vsplit'))
-  vim.keymap.set('n', "s", api.node.open.horizontal, opts('Open: split'))
 end
 
 nvim_tree.setup({
@@ -224,16 +192,6 @@ nvim_tree.setup({
       },
     },
   },
-
-  --  unknown options as of 22.05
-  --
-  --  update_to_buf_dir = {
-  --    enable = true,
-  --    auto_open = true,
-  --  },
-  --  auto_resize = true,
-  --  git_hl = 1,
-  --  root_folder_modifier = ":t",
 })
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
