@@ -80,5 +80,5 @@ vim.opt.wildignore = vim.opt.wildignore + "*.gba,*.sfc,*.078,*.nds,*.smd,*.smc"
 vim.opt.wildignore = vim.opt.wildignore + "*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android"
 
 if string.match(vim.env.TERM, "256color") and vim.env.TMUX ~= "" then
-  vim.go.t_ut = ""
+  -- vim.go.t_ut = ""
 end

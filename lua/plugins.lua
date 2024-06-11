@@ -13,7 +13,7 @@ return {
   {
     "goolord/alpha-nvim", -- startup screen
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
       {
         "joshdick/onedark.vim",
         config = function()
@@ -40,7 +40,7 @@ return {
     config = require("ui.lualine").config,
     dependencies = {
       {
-        "kyazdani42/nvim-web-devicons",
+        "nvim-tree/nvim-web-devicons",
         lazy = true,
       },
     },
@@ -175,7 +175,11 @@ return {
       "p00f/clangd_extensions.nvim",
       'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
     },
-    config = require("completion.lsp-setup").config,
+    -- config = require("completion.lsp-setup").config,
+    config = function()
+      require('lsp-setup').setup({})
+      require("completion.lsp-setup").config()
+    end,
   },
   {
     "lvimuser/lsp-inlayhints.nvim",

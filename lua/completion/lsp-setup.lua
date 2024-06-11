@@ -35,6 +35,11 @@ function M.config()
   -- local util = require 'lspconfig.util'
   -- local root_pattern = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "CMakeLists.txt", "src");
 
+  local function get_vue_typescript_path()
+    return require("mason-registry").get_package("vue-language-server"):get_install_path() ..
+        "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+  end
+
   local settings = {
     default_mappings = false,
     mappings = mappings,
@@ -99,7 +104,22 @@ function M.config()
       html = {},
       jsonls = {},
       jsonnet_ls = {},
-      tsserver = {}, -- javascript
+      tsserver = {
+        init_options = {
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = get_vue_typescript_path(),
+              languages = { "javascript", "typescript", "vue" },
+            },
+          },
+        },
+        filetypes = {
+          "javascript",
+          "typescript",
+          "vue",
+        },
+      }, -- javascript
       lua_ls = {
         settings = {
           Lua = {
@@ -129,10 +149,11 @@ function M.config()
       rust_analyzer = {},
       rnix = {},
       vimls = {},
-      vuels = {},
+      volar = {},
       yamlls = {},
     },
   }
+
   local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
