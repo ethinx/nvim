@@ -109,13 +109,21 @@ return {
   },
 
   -- comment
+  -- {
+  --   "tpope/vim-commentary",
+  --   event = {
+  --     "CursorMoved",
+  --     "BufRead",
+  --   },
+  --   config = require("editor.vim-commentary").config,
+  -- },
   {
-    "tpope/vim-commentary",
+    "numToStr/Comment.nvim",
     event = {
       "CursorMoved",
       "BufRead",
     },
-    config = require("editor.vim-commentary").config,
+    config = require("editor.comment").config,
   },
 
   {
