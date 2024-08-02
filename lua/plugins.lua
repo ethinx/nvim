@@ -84,6 +84,9 @@ return {
     "folke/which-key.nvim",
     config = require("helper.whichkey").config,
     event = "VeryLazy",
+    dependencies = {
+      'echasnovski/mini.nvim',
+    }
   },
   {
     -- "kyazdani42/nvim-tree.lua",
