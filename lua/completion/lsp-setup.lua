@@ -35,10 +35,10 @@ function M.config()
   -- local util = require 'lspconfig.util'
   -- local root_pattern = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "CMakeLists.txt", "src");
 
-  local function get_vue_typescript_path()
-    return require("mason-registry").get_package("vue-language-server"):get_install_path() ..
-        "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
-  end
+  -- local function get_vue_typescript_path()
+  --   return require("mason-registry").get_package("vue-language-server"):get_install_path() ..
+  --       "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+  -- end
 
   local settings = {
     default_mappings = false,
@@ -58,7 +58,7 @@ function M.config()
 
       require("lsp-setup.utils").format_on_save(client)
       require("illuminate").on_attach(client)
-      require("lsp-inlayhints").on_attach(client, bufnr)
+      -- require("lsp-inlayhints").on_attach(client, bufnr)
 
       -- TODO: check the alt key on macOS
       -- vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
@@ -107,11 +107,11 @@ function M.config()
       tsserver = {
         init_options = {
           plugins = {
-            {
-              name = "@vue/typescript-plugin",
-              location = get_vue_typescript_path(),
-              languages = { "javascript", "typescript", "vue" },
-            },
+            -- {
+            --   name = "@vue/typescript-plugin",
+            --   location = get_vue_typescript_path(),
+            --   languages = { "javascript", "typescript", "vue" },
+            -- },
           },
         },
         filetypes = {
@@ -149,7 +149,8 @@ function M.config()
       rust_analyzer = {},
       rnix = {},
       vimls = {},
-      volar = {},
+      -- volar = {},
+      vue_ls = {},
       yamlls = {},
     },
   }

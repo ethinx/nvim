@@ -1,7 +1,7 @@
 return {
   {
     "towolf/vim-helm",
-    event = "BufRead",
+    -- event = "BufRead",
   },
   {
     "joshdick/onedark.vim",
@@ -192,14 +192,14 @@ return {
       require("completion.lsp-setup").config()
     end,
   },
-  {
-    "lvimuser/lsp-inlayhints.nvim",
-    event = "BufRead",
-    branch = "anticonceal",
-    config = function()
-      require('helper/lsp-inlayhints')
-    end,
-  },
+  -- {
+  --   "lvimuser/lsp-inlayhints.nvim",
+  --   event = "BufRead",
+  --   branch = "anticonceal",
+  --   config = function()
+  --     require('helper/lsp-inlayhints')
+  --   end,
+  -- },
 
   {
     "nvim-telescope/telescope.nvim",
